@@ -42,7 +42,7 @@ public class FranquiciaController {
         return franquiciaService.obtenerTodasFranquicias();
     }
 
-    // 3. Endpoint para modificar nombre de la franquicia
+    // 4. Endpoint para modificar nombre de la franquicia
     @PatchMapping("/{franquiciaId}/nombre")
     public Franquicia modificarNombreFranquicia(@PathVariable String franquiciaId, @RequestParam String nuevoNombre) {
     return franquiciaService.modificarNombreFranquicia(franquiciaId, nuevoNombre);
@@ -68,7 +68,7 @@ public class FranquiciaController {
         return franquiciaService.eliminarProducto(franquiciaId, sucursalId, productoId);
     }
 
-    // 3. Endpoint para modificar el stock de un producto
+    // 4. Endpoint para modificar el stock de un producto
     @PatchMapping("/{franquiciaId}/sucursales/{sucursalId}/productos/{productoId}/stock")
     public ResponseEntity<Franquicia> modificarStockProducto(@PathVariable String franquiciaId,@PathVariable String sucursalId,@PathVariable String productoId,@RequestParam int nuevoStock) {
         Franquicia franquiciaActualizada = franquiciaService.modificarStockProducto(franquiciaId, sucursalId, productoId, nuevoStock);
@@ -80,13 +80,13 @@ public class FranquiciaController {
         }
     }
 
-    // 4. Endpoint para modificar un producto en una sucursal (nombre, stock)
+    // 5. Endpoint para modificar un producto en una sucursal (nombre, stock)
     @PutMapping("/{franquiciaId}/sucursales/{sucursalId}/productos/{productoId}")
     public Franquicia modificarProducto(@PathVariable String franquiciaId, @PathVariable String sucursalId, @PathVariable String productoId, @RequestBody Producto productoActualizado) {
         return franquiciaService.modificarProducto(franquiciaId, sucursalId, productoId, productoActualizado);
     }
 
-    // 5. Endpoint para obtener el producto con más stock por sucursal de una franquicia
+    // 6. Endpoint para obtener el producto con más stock por sucursal de una franquicia
     @GetMapping("/{franquiciaId}/productos-max-stock")
     public List<Producto> obtenerProductoMayorStock(@PathVariable String franquiciaId) {
         return franquiciaService.obtenerProductosMayorStock(franquiciaId);
